@@ -1,0 +1,13 @@
+* A Quick Org Export to Impress.js Demo
+
+In emacs, run =M-x package-list-packages= and then install =ox-impress-js=
+
+You may have to =M-x load-library RET ox-impress-js=
+
+Then open =impress.org= and =C-c C-e j j= to export to =impress.html=
+
+Check it out in your browser.
+
+The contents of the resources directory in this repository were copied from the package install directory of =ox-impress-js=.
+
+A script has been added to impress.org to set random values for the positions and rotations of the slides. Setting these by hand in the HTML is not so much fun.

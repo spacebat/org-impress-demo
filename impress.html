@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ox-impress-js</title>
+<!-- 2015-01-14 Wed 11:38 -->
+<meta  charset="utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="viewport" content="width=1024" />
+<meta  name="apple-mobile-web-app-capable" content="yes" />
+<meta  name="author" content="Andrew Kirkpatrick &lt;ubermonk@gmail.com&gt;" />
+<meta  name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com."
+ />
+<link  href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+<link  rel="shortcut icon" href="favicon.png" />
+<link  rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link  rel="stylesheet" href="resources/css/impress-demo.css" type="text/css" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+<div id="impress">
+<div id="title" class="step" data-x="0" data-y="0" data-scale="1">
+<h1>ox-impress-js</h1>
+<div id="postamble" class="status">
+<p class="author">Author: Andrew Kirkpatrick &lt;ubermonk@gmail.com&gt;</p>
+<p class="date">Created: 2015-01-14 Wed 11:38</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.51.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</div>
+<div id="table-of-contents" class="step "  data-x="0.00000000" data-y="0.00000000" data-z="0.00000000" data-scale="1.00000000" data-rotate-x="-0.00000000" data-rotate-y="0.00000000" data-rotate-z="-0.00000000">
+<h1>Table of Contents</h1>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/outline-container-sec-1">1. Org Export to Impress.js</a></li>
+<li><a href="#/outline-container-sec-2">2. Fun times</a></li>
+<li><a href="#/outline-container-sec-3">3. And stuff</a>
+<ul>
+<li><a href="#/outline-container-sec-3-1">3.1. Funner times</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-1 step slide"  data-x="1000.00000000" data-y="0.00000000" data-z="0.00000000" data-rotate-x="-0.00000000" data-rotate-y="0.00000000" data-rotate-z="-0.00000000">
+<h1 id="sec-1"><span class="section-number-2">1</span> Org Export to Impress.js</h1>
+<div class="outline-text-2" id="text-1">
+<p>
+Its not reveal.js. That may or may not be a feature.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-1 step slide"  data-x="2000.00000000" data-y="0.00000000" data-z="0.00000000" data-rotate-x="-0.00000000" data-rotate-y="0.00000000" data-rotate-z="-0.00000000">
+<h1 id="sec-2"><span class="section-number-2">2</span> Fun times</h1>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>First item
+</li>
+<li>Second item
+</li>
+<li>Its not numbered
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-1 step slide"  data-x="4000.00000000" data-y="0.00000000" data-z="0.00000000" data-rotate-x="-0.00000000" data-rotate-y="0.00000000" data-rotate-z="-0.00000000">
+<h1 id="sec-3"><span class="section-number-2">3</span> And stuff</h1>
+<div class="outline-text-2" id="text-3">
+<p>
+Following tis line is a numbered list:
+</p>
+<ol class="org-ol">
+<li>Nice keynote
+</li>
+<li>Must&#x2026; focus&#x2026;
+</li>
+<li>Yesss
+</li>
+</ol>
+<p>
+Another line after the list
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-1 step slide"  data-x="3000.00000000" data-y="0.00000000" data-z="0.00000000" data-rotate-x="-0.00000000" data-rotate-y="0.00000000" data-rotate-z="-0.00000000">
+<h1 id="sec-3-1"><span class="section-number-3">3.1</span> Funner times</h1>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Um yes
+</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    /*
+     Normally this would be attached to jquery's DOM ready event, but impress().init() only
+     reads the data attributes once, so this has to run before impress().init() is called,
+     but after the presentation slides in the DOM.
+     Note, impress doesn't seem to read the actual HTML5 DOM data, just the attributes.
+    */
+    (function() {
+        var x=0, y=0, z=0;
+        $("div.step").each(function(){
+            var $this = $(this);
+            x += 2000;
+            y += Math.random() * 2000 - 1000;
+            z -= Math.random() * 2000 + 1000;
+            var data = {
+                'x': x,
+                'y': y,
+                'z': z,
+                'rotate-x': Math.random() * 90 - 45,
+                'rotate-y': Math.random() * 90 - 45,
+                'rotate-z': Math.random() * 90 - 45
+            };
+            for (var key in data) {
+                var attr = "data-" + key;
+                $this.attr(attr, data[key]);
+            }
+        });
+    })();
+</script>
+</div>
+</div>
+</div>
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) {
+document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+<script src="resources/js/impress.js"></script>
+<script>impress().init();</script>
+</body>
+</html>

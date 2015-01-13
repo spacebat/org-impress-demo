@@ -1,0 +1,58 @@
+#+TITLE: ox-impress-js
+#+AUTHOR: Andrew Kirkpatrick <ubermonk@gmail.com>
+
+* Org Export to Impress.js
+Its not reveal.js. That may or may not be a feature.
+
+* Fun times
+ - First item
+ - Second item
+ - Its not numbered
+
+* And stuff
+Following tis line is a numbered list:
+1. Nice keynote
+2. Must... focus...
+3. Yesss
+Another line after the list
+
+** Funner times
+   Um yes
+
+#+BEGIN_HTML
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    /*
+     Normally this would be attached to jquery's DOM ready event, but impress().init() only
+     reads the data attributes once, so this has to run before impress().init() is called,
+     but after the presentation slides in the DOM.
+     Note, impress doesn't seem to read the actual HTML5 DOM data, just the attributes.
+    */
+    (function() {
+        var x=0, y=0, z=0;
+        $("div.step").each(function(){
+            var $this = $(this);
+            x += 2000;
+            y += Math.random() * 2000 - 1000;
+            z -= Math.random() * 2000 + 1000;
+            var data = {
+                'x': x,
+                'y': y,
+                'z': z,
+                'rotate-x': Math.random() * 90 - 45,
+                'rotate-y': Math.random() * 90 - 45,
+                'rotate-z': Math.random() * 90 - 45
+            };
+            for (var key in data) {
+                var attr = "data-" + key;
+                $this.attr(attr, data[key]);
+            }
+        });
+    })();
+</script>
+#+END_HTML
+
+#+HTML_DOCTYPE: html5
+#+IMPRESSJS_SRC: resources/js/impress.js
+#+IMPRESSJS_STYLE: resources/css/impress-demo.css
+#+IMPRESSJS_TOC:
